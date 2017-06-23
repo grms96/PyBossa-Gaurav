@@ -1,0 +1,12 @@
+{% extends "projects/base.html" %}
+
+{% import "projects/_helpers.html" as helper %}
+{% from "account/_helpers.html" import render_pagination %}
+{% from "_formhelpers.html" import render_field,render_radio_field %}
+{% block projectcontent %}
+
+<p><h2>total questions are {{total}} <h2></p>
+<p><h2>correct response are {{correct}} %<h2></p>
+<p><h2>Your result is {{marks}} %<h2></p>
+
+{% endblock %}

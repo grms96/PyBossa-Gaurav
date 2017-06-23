@@ -1,0 +1,21 @@
+{% extends "projects/base.html" %}
+
+{% import "projects/_helpers.html" as helper %}
+{% from "account/_helpers.html" import render_pagination %}
+{% from "_formhelpers.html" import render_field,render_radio_field %}
+{% block projectcontent %}
+
+<p>Select Quiz</p>
+
+<form method="post" name="display_question">
+	{{form.hidden_tag()}}
+		{{ render_radio_field(form.name) }}
+    {% for message in form.name.errors %}
+             <div>{{ message }}</div>
+          {% endfor %}
+
+
+	<input type="submit" value="ATTEMPT" class="btn btn-primary"></input>
+</form>
+
+{% endblock %}

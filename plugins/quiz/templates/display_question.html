@@ -1,0 +1,41 @@
+{% extends "projects/base.html" %}
+
+{% import "projects/_helpers.html" as helper %}
+{% from "account/_helpers.html" import render_pagination %}
+{% from "_formhelpers.html" import render_field,render_radio_field %}
+{% block projectcontent %}
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/c/video.js"></script>
+</head>
+<p>Quiz: {{ quiz_name }}</p>
+
+<form method="post" name="display_question">
+	{{form.hidden_tag()}}
+		<b><p>{{ q.q_text }}</p></b><br>
+		{% if file_type == "image" %}
+			<b><img src="{{ q.file_path }}" width="400px" height="300px"></img></b>
+		{% endif %}
+		{% if file_type == "audio" %}
+			<audio controls>
+				<source src="{{ q.file_path }}" type="audio/mpeg">
+			</audio>
+		{% endif %}
+		{% if file_type == "video" %}
+			<!--<iframe src="{{ q.file_path }}" height="320" width="240" frameborder="0" type="video/mp4"></iframe>-->
+			<video id="example_video_by_hand" class="video-js vjs-default-skin" controls width="400" height="300" preload="auto" data-setup="{}">
+     <source type="video/mp4" src="{{q.file_path}}">
+   </video>
+		{% endif %}
+		{% if file_type == "document" %}
+			<b><img src="{{ q.file_path }}"></img></b>
+		{% endif %}
+		{{ render_radio_field(form.submission) }}
+		{% for message in form.submission.errors %}
+		         <div>{{ message }}</div>
+		      {% endfor %}
+	<input type="submit" value="SUBMIT" class="btn btn-primary"></input>
+</form>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+{
+    "identifier": "quiz",
+    "name": "Quiz",
+    "author": "saketkarve",
+    "license": "AGPLv3",
+    "description": "Quiz for user evaluation",
+    "version": "0.0.1"
+}

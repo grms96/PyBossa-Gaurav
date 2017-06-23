@@ -1,0 +1,59 @@
+{% extends "projects/base.html" %}
+
+{% import "projects/_helpers.html" as helper %}
+{% from "account/_helpers.html" import render_pagination %}
+{% from "_formhelpers.html" import render_field,render_radio_field %}
+{% block projectcontent %}
+
+<p>Add question to {{ quiz_name }}</p>
+<form method="post" name="create_question">
+
+	{{form.hidden_tag()}}
+	 
+{{ render_field(form.question_text,class_="span2", placeholder=_('Question_text')) }}
+	{% for message in form.question_text.errors %}
+	         <div>{{ message }}</div>
+	      {% endfor %}
+
+	<br>
+	{{ form.file_field }}
+	{% for message in form.file_field.errors %}
+	         <div>{{ message }}</div>
+	      {% endfor %}
+<br>
+	{{ render_field(form.oA,class_="span2", placeholder=_('Option A')) }}
+	{% for message in form.oA.errors %}
+	         <div>{{ message }}</div>
+	      {% endfor %}
+<br>
+	{{ render_field(form.oB,class_="span2", placeholder=_('Option B')) }}
+	{% for message in form.oB.errors %}
+	         <div>{{ message }}</div>
+	      {% endfor %}
+<br>
+	{{ render_field(form.oC,class_="span2", placeholder=_('Option C')) }}
+	{% for message in form.oC.errors %}
+	         <div>{{ message }}</div>
+	      {% endfor %}
+<br>
+	{{ render_field(form.oD,class_="span2", placeholder=_('Option D')) }}
+	{% for message in form.oD.errors %}
+	         <div>{{ message }}</div>
+	      {% endfor %}<br>
+	<br>
+	<label>Correct Answer</label></br>
+	<p> {{ render_radio_field(form.correct_answer) }}
+		{% for message in form.correct_answer.errors %}
+		         <div>{{ message }}</div>
+		      {% endfor %}</p>
+	<br>
+	{{ render_field(form.category,class_="span2", placeholder=_('Category')) }}
+	{% for message in form.category.errors %}
+	         <div>{{ message }}</div>
+	      {% endfor %}
+	<br>
+	<input type="submit" name="submit" value="ADD" class="btn btn-primary"></input>
+	<input type="submit" name="submit" value="SUBMIT" class="btn btn-primary"></input>
+</form>
+
+{% endblock %}

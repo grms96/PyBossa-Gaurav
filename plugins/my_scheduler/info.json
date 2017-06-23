@@ -1,0 +1,8 @@
+{
+    "identifier": "my_scheduler",
+    "name": "FRGScheduler",
+    "author": "FRG",
+    "license": "AGPLv3",
+    "description": "A custom scheduler which distributes tasks as per user profile",
+    "version": "0.0.1"
+}

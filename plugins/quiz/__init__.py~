@@ -1,0 +1,27 @@
+from flask import Flask,session
+from flask_sqlalchemy import SQLAlchemy
+from flask.ext.plugins import Plugin
+from flask import current_app as app
+from flask import current_app
+__plugin__ = "Quiz"
+__version__ = "0.0.1"
+
+#app = Flask(__name__)
+#app.config.from_object('config')
+#db = SQLAlchemy(app)
+
+#from flask import Blueprint
+#blueprint = Blueprint('blueprint', __name__, template_folder="templates")
+
+
+
+class Quiz(Plugin):
+    def setup(self):
+	from .views import blueprint
+	print app.root_path
+	
+	#session["parent_path"]=app.root_path[:app.root_path.rfind("/")]
+        app.register_blueprint(blueprint, url_prefix="/user_evaluation")
+
+
+import views, models

@@ -1,0 +1,16 @@
+{% extends "projects/base.html" %}
+{% import "account/_helpers.html" as helper %}
+{% block projectcontent %}
+{% from "_formhelpers.html" import render_field %}
+<p>Quiz</p>
+
+<form method="post" name="create_quiz">
+	{{form.hidden_tag()}}
+		<b><p>{{ render_field(form.name,class_="span2", placeholder=_('Quiz Name')) }}
+			{% for message in form.name.errors %}
+			         <div>{{ message }}</div>
+			      {% endfor %}</p></b><br>
+	<input type="submit" value="Create" class="btn btn-primary"></input>
+</form>
+
+{% endblock %}
